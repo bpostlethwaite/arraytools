@@ -1,0 +1,24 @@
+{
+  "name": "arrayTools",
+  "version": "0.0.1",
+  "description": "Collection of array processing tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpostlethwaite/arrayTools.git"
+  },
+  "keywords": [
+    "math",
+    "array",
+    "matrix",
+    "vector",
+    "processing"
+  ],
+  "author": "bpostlethwaite",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "08178b73ff1e443c16e61fff026c1357cc147faa"
+}
