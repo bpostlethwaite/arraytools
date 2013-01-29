@@ -3,12 +3,8 @@ module.exports = function () {
 
   var that = {}
 
-  function isArray (v) {
-    return Object.prototype.toString.call(v) === "[object Array]"
-  }
-   
   function isObj (v) {
-    return (v != null) && (typeof v === 'object') && !isArray(v)
+    return (v != null) && (typeof v === 'object') && !Array.isArray(v)
   }
 
   function linspace (start, end, num) {
@@ -27,7 +23,7 @@ module.exports = function () {
   }
 
   function zip3 (a, b, c) {
-      var len = Math.min.apply(null, [a.length, b.length, c.length]) 
+      var len = Math.min.apply(null, [a.length, b.length, c.length])
       var result = []
       for (var n = 0; n < len; n++) {
           result.push([a[n], b[n], c[n]])

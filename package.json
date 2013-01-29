@@ -1,5 +1,5 @@
 {
-  "name": "arrayTools",
+  "name": "arraytools",
   "version": "0.0.1",
   "description": "Collection of array processing tools",
   "main": "index.js",
