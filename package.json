@@ -1,10 +1,10 @@
 {
   "name": "arraytools",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Collection of array processing tools",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,11 @@
   "author": "bpostlethwaite",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "gitHead": "08178b73ff1e443c16e61fff026c1357cc147faa"
+  "gitHead": "08178b73ff1e443c16e61fff026c1357cc147faa",
+  "dependencies": {},
+  "devDependencies": {
+    "tape": ">0.2",
+    "tap": ">0.2"
+  }
+
 }

@@ -1,5 +1,6 @@
 "use strict";
-module.exports = function () {
+
+var arraytools  = function () {
 
   var that = {}
 
@@ -31,12 +32,31 @@ module.exports = function () {
       return result
   }
 
-that.isArray = isArray
-that.isObj = isObj
-that.linspace = linspace
-that.graph = graph
-that.zip3 = zip3
+  function sum (A) {
+    var acc = 0
+    accumulate(A, acc)
+    function accumulate(x) {
+      for (var i = 0; i < x.length; i++) {
+        if (Array.isArray(x[i]))
+          accumulate(x[i], acc)
+        else
+          acc += x[i]
+      }
+    }
+    return acc
+  }
 
-return that
+
+
+  that.isObj = isObj
+  that.linspace = linspace
+  that.graph = graph
+  that.zip3 = zip3
+  that.sum = sum
+
+  return that
 
 }
+
+
+module.exports = arraytools()
