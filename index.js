@@ -16,7 +16,7 @@ var arraytools  = function () {
     return a
   }
 
-   function graph (x , y) {
+   function lines (x , y) {
     var a = []
     for (var i = 0; i < x.length - 1; i++)
       a = a.concat( linspace(y[i], y[i+1], x[i+1] - x[i] ) )
@@ -50,7 +50,7 @@ var arraytools  = function () {
 
   that.isObj = isObj
   that.linspace = linspace
-  that.graph = graph
+  that.lines = lines
   that.zip3 = zip3
   that.sum = sum
 
