@@ -9,17 +9,10 @@ var arraytools  = function () {
   }
 
   function linspace (start, end, num) {
-    var inc = (end - start) / num
+    var inc = (end - start) / (num - 1)
     var a = []
-    for( var ii = 0; ii <= num; ii++)
+    for( var ii = 0; ii < num; ii++)
       a.push(start + ii*inc)
-    return a
-  }
-
-   function lines (x , y) {
-    var a = []
-    for (var i = 0; i < x.length - 1; i++)
-      a = a.concat( linspace(y[i], y[i+1], x[i+1] - x[i] ) )
     return a
   }
 
@@ -50,7 +43,6 @@ var arraytools  = function () {
 
   that.isObj = isObj
   that.linspace = linspace
-  that.lines = lines
   that.zip3 = zip3
   that.sum = sum
 
