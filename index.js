@@ -4,8 +4,8 @@ var arraytools  = function () {
 
   var that = {}
 
-  function isPlainObj (v) {
-    return (v != null) && (typeof v === 'object') && !Array.isArray(v)
+  function isPlainObject (v) {
+    return !Array.isArray(v) && v !== null && typeof v === 'object'
   }
 
   function linspace (start, end, num) {
@@ -63,7 +63,7 @@ var arraytools  = function () {
   }
 
 
-  function str2RgbArray(str, oneBased) {
+  function str2RgbArray(str, twoFiftySix) {
     // convert hex or rbg strings to 0->1 or 0->255 rgb array
     var rgb,
         match;
@@ -89,7 +89,7 @@ var arraytools  = function () {
       rgb[2] = parseInt(match[3]);
     }
 
-    if (oneBased) {
+    if (!twoFiftySix) {
       for (var j=0; j<3; ++j) rgb[j] = rgb[j]/255
     }
 
@@ -100,7 +100,7 @@ var arraytools  = function () {
 
 
 
-  that.isPlainObj = isPlainObj
+  that.isPlainObject = isPlainObject
   that.linspace = linspace
   that.zip3 = zip3
   that.sum = sum
