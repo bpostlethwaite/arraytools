@@ -81,9 +81,9 @@ var arraytools  = function () {
       rgb[2] = (match & 255);
     }
 
-    // rgb(34, 34, 127) or rgb(34, 34, 127, 0.1) notation
-    else if (/^rgb\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/.test(str)) {
-      match = str.match(/^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,.*)?\)$/);
+    // rgb(34, 34, 127) or rgba(34, 34, 127, 0.1) notation
+    else if (/^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/.test(str)) {
+      match = str.match(/^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,.*)?\)$/);
       rgb[0] = parseInt(match[1]);
       rgb[1] = parseInt(match[2]);
       rgb[2] = parseInt(match[3]);
