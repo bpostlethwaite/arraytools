@@ -1,11 +1,10 @@
 {
   "name": "arraytools",
-  "version": "0.1.7",
+  "version": "0.2",
   "description": "Collection of array processing tools",
   "author": "bpostlethwaite",
   "dependencies": {},
   "devDependencies": {
-    "tape": ">0.2",
     "tap": ">0.2"
   },
   "main": "index.js",

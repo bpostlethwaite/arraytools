@@ -1,5 +1,5 @@
 var ar = require("../.")
-var test = require("tape")
+var test = require("tap").test
 
 
 test('matrix sum - regular array', function(t) {

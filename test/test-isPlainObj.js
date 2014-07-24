@@ -1,5 +1,5 @@
 var ar = require("../.")
-var test = require("tape")
+var test = require("tap").test
 
 
 test('is object - object', function(t) {
