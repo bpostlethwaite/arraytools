@@ -4,6 +4,9 @@ var arraytools  = function () {
 
   var that = {}
 
+  var RGB_REGEX =  /^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/
+  var RGB_GROUP_REGEX = /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,.*)?\)$/
+
   function isPlainObject (v) {
     return !Array.isArray(v) && v !== null && typeof v === 'object'
   }
@@ -51,6 +54,17 @@ var arraytools  = function () {
     return carr;
   }
 
+
+  function copy1D (arr) {
+    var carr = [];
+    for (var i = 0; i < arr.length; ++i) {
+      carr[i] = arr[i];
+    }
+
+    return carr;
+  }
+
+
   function isEqual(arr1, arr2) {
     if(arr1.length !== arr2.length)
       return false;
@@ -82,8 +96,8 @@ var arraytools  = function () {
     }
 
     // rgb(34, 34, 127) or rgba(34, 34, 127, 0.1) notation
-    else if (/^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/.test(str)) {
-      match = str.match(/^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,.*)?\)$/);
+    else if (RGB_REGEX.test(str)) {
+      match = str.match(RGB_GROUP_REGEX);
       rgb[0] = parseInt(match[1]);
       rgb[1] = parseInt(match[2]);
       rgb[2] = parseInt(match[3]);
@@ -106,6 +120,7 @@ var arraytools  = function () {
   that.sum = sum
   that.isEqual = isEqual;
   that.copy2D = copy2D;
+  that.copy1D = copy1D;
   that.str2RgbArray = str2RgbArray;
 
   return that
