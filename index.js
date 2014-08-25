@@ -5,7 +5,7 @@ var arraytools  = function () {
   var that = {}
 
   var RGB_REGEX =  /^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/
-  var RGB_GROUP_REGEX = /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,.*)?\)$/
+  var RGB_GROUP_REGEX = /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,?\s*(.*)?\)$/
 
   function isPlainObject (v) {
     return !Array.isArray(v) && v !== null && typeof v === 'object'
@@ -112,6 +112,46 @@ var arraytools  = function () {
   }
 
 
+  function str2RgbaArray(str, twoFiftySix) {
+    // convert hex or rbg strings to 0->1 or 0->255 rgb array
+    var rgb,
+        match;
+
+    if (typeof str !== 'string') return str;
+
+    rgb = [];
+    // hex notation
+    if (str[0] === '#') {
+      str = str.substr(1) // remove hash
+      if (str.length === 3) str += str // fff -> ffffff
+      match = parseInt(str, 16);
+      rgb[0] = ((match >> 16) & 255);
+      rgb[1] = ((match >> 8) & 255);
+      rgb[2] = (match & 255);
+    }
+
+    // rgb(34, 34, 127) or rgba(34, 34, 127, 0.1) notation
+    else if (RGB_REGEX.test(str)) {
+      match = str.match(RGB_GROUP_REGEX);
+      rgb[0] = parseInt(match[1]);
+      rgb[1] = parseInt(match[2]);
+      rgb[2] = parseInt(match[3]);
+      if (match[4]) rgb[3] = parseFloat(match[4]);
+      else rgb[3] = 1.0;
+    }
+
+
+
+    if (!twoFiftySix) {
+      for (var j=0; j<3; ++j) rgb[j] = rgb[j]/255
+    }
+
+
+    return rgb;
+  }
+
+
+
 
 
   that.isPlainObject = isPlainObject
@@ -121,7 +161,8 @@ var arraytools  = function () {
   that.isEqual = isEqual;
   that.copy2D = copy2D;
   that.copy1D = copy1D;
-  that.str2RgbArray = str2RgbArray;
+  that.str2RgbArray = str2RgbArray
+  that.str2RgbaArray = str2RgbaArray;
 
   return that
 
