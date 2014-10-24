@@ -1,6 +1,6 @@
 {
   "name": "arraytools",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Collection of array processing tools",
   "author": "bpostlethwaite",
   "dependencies": {},

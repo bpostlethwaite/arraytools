@@ -2,44 +2,58 @@
 
 var arraytools  = function () {
 
-  var that = {}
+  var that = {};
 
-  var RGB_REGEX =  /^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/
-  var RGB_GROUP_REGEX = /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,?\s*(.*)?\)$/
+  var RGB_REGEX =  /^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,.*)?\)$/;
+  var RGB_GROUP_REGEX = /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,?\s*(.*)?\)$/;
 
   function isPlainObject (v) {
-    return !Array.isArray(v) && v !== null && typeof v === 'object'
+    return !Array.isArray(v) && v !== null && typeof v === 'object';
   }
 
   function linspace (start, end, num) {
-    var inc = (end - start) / (num - 1)
-    var a = []
+    var inc = (end - start) / (num - 1);
+    var a = [];
     for( var ii = 0; ii < num; ii++)
-      a.push(start + ii*inc)
-    return a
+      a.push(start + ii*inc);
+    return a;
+  }
+
+  function zip () {
+      var arrays = [].slice.call(arguments);
+      var lengths = arrays.map(function (a) {return a.length;});
+      var len = Math.min.apply(null, lengths);
+      var zipped = [];
+      for (var i = 0; i < len; i++) {
+          zipped[i] = [];
+          for (var j = 0; j < arrays.length; ++j) {
+              zipped[i][j] = arrays[j][i];
+          }
+      }
+      return zipped;
   }
 
   function zip3 (a, b, c) {
-      var len = Math.min.apply(null, [a.length, b.length, c.length])
-      var result = []
+      var len = Math.min.apply(null, [a.length, b.length, c.length]);
+      var result = [];
       for (var n = 0; n < len; n++) {
-          result.push([a[n], b[n], c[n]])
+          result.push([a[n], b[n], c[n]]);
       }
-      return result
+      return result;
   }
 
   function sum (A) {
-    var acc = 0
-    accumulate(A, acc)
+    var acc = 0;
+    accumulate(A, acc);
     function accumulate(x) {
       for (var i = 0; i < x.length; i++) {
         if (Array.isArray(x[i]))
-          accumulate(x[i], acc)
+          accumulate(x[i], acc);
         else
-          acc += x[i]
+          acc += x[i];
       }
     }
-    return acc
+    return acc;
   }
 
   function copy2D (arr) {
@@ -154,14 +168,15 @@ var arraytools  = function () {
 
 
 
-  that.isPlainObject = isPlainObject
-  that.linspace = linspace
-  that.zip3 = zip3
-  that.sum = sum
+  that.isPlainObject = isPlainObject;
+  that.linspace = linspace;
+  that.zip3 = zip3;
+  that.sum = sum;
+  that.zip = zip;
   that.isEqual = isEqual;
   that.copy2D = copy2D;
   that.copy1D = copy1D;
-  that.str2RgbArray = str2RgbArray
+  that.str2RgbArray = str2RgbArray;
   that.str2RgbaArray = str2RgbaArray;
 
   return that
@@ -169,4 +184,4 @@ var arraytools  = function () {
 }
 
 
-module.exports = arraytools()
+module.exports = arraytools();
