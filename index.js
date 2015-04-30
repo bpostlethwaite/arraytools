@@ -12,7 +12,7 @@ var arraytools  = function () {
   }
 
   function linspace (start, end, num) {
-    var inc = (end - start) / (num - 1);
+    var inc = (end - start) / Math.max(num - 1, 1);
     var a = [];
     for( var ii = 0; ii < num; ii++)
       a.push(start + ii*inc);
